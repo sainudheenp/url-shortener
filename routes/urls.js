@@ -1,9 +1,8 @@
-import express from 'express';
-import { nanoid } from 'nanoid';
-import Url from '../models/Url.js';
-import { validateUrl } from '../utils/utils.js';
-import dotenv from 'dotenv';
-dotenv.config({ path: '../config/.env' });
+const express = require('express');
+const { nanoid } = require('nanoid');
+const Url = require('../models/Url.js');
+const { validateUrl }  = require('../utils/utils.js');
+require('dotenv').config();
 
 
 const router = express.router();
