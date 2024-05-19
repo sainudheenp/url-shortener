@@ -10,7 +10,7 @@ router.get('/:urlId', async (req, res) => {
         {
           urlId: req.params.urlId,
         },
-        { setclick: { clicks: 1 } }
+        { $inc: { clicks: 1 } }
       );
       return res.redirect(url.origUrl);
     } else res.status(404).json('Not found');
