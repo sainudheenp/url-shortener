@@ -29,7 +29,7 @@ console.log("port log: ", PORT);
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/srturl", UrslsRouter);
+app.use("/url", UrslsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
