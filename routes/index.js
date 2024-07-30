@@ -1,23 +1,32 @@
-const express = require('express');
-const Url = require('../models/Url.js');
-const router = express.Router();
+var express =require ('express');
+var router = express.Router()
 
-router.get('/:urlId', async (req, res) => {
-  try {
-    const url = await Url.findOne({ urlId: req.params.urlId });
-    if (url) {
-      await Url.updateOne(
-        {
-          urlId: req.params.urlId,
-        },
-        { $inc: { clicks: 1 } }
-      );
-      return res.redirect(url.origUrl);
-    } else res.status(404).json('Not found');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json('Server Error');
-  }
-});
 
-module.exports =router;
+router.get("/",function (req,res,next){
+  res.render('index',{tite:"zain"})
+})
+
+
+
+
+
+
+
+
+
+
+module.exports=router;
+
+ 
+
+
+
+// var express = require('express');
+// var router = express.Router();
+
+// /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
+
+// module.exports = router;
