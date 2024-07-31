@@ -13,11 +13,10 @@ ConnectDB();
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var UrslsRouter = require("./routes/urls");
+var ReturnRouter = require("./routes/return")
 
 var app = express();
-app.listen(process.env.PORT || 3001, () => {
-  console.log("server Running on ", process.env.PORT);
-});
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,6 +30,8 @@ console.log("port log: ", PORT);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/url", UrslsRouter);
+app.use("/api",ReturnRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -51,3 +52,7 @@ app.use(function (err, req, res, next) {
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.listen(process.env.PORT || 3001, () => {
+  console.log("server Running on ", process.env.PORT);
+});

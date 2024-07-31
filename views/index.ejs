@@ -35,7 +35,7 @@
         const row = document.createElement('tr');
         row.innerHTML = `
     <td><a href="${url.full}">${url.full}</a> </td>
-      <td><a href="${url.short}">${url.short}</a>  </td>
+      <td><a href="/api/return/${url.short}">${url.short}</a>  </td>
       <td>${url.Clicks}</td>
 `;
         tableBody.appendChild(row);
