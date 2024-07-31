@@ -10,6 +10,51 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+
+
+  <script>
+
+    async function fetchUrls() {
+      try {
+        const response = await fetch('/fetch-urls');
+        const data = await response.json();
+        console.log("res=", response);
+        console.log("data =", data);
+        updateTable(data);
+      } catch (error) {
+        console.log("error while fetch data", error)
+
+      }
+    }
+
+    function updateTable(data) {
+      const tableBody = document.querySelector('#urls-table tbody')
+      tableBody.innerHTML = '';
+      data.forEach(url => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+    <td><a href="${url.full}">${url.full}</a> </td>
+      <td><a href="${url.short}">${url.short}</a>  </td>
+      <td>${url.Clicks}</td>
+`;
+        tableBody.appendChild(row);
+      });
+
+    }
+
+
+    document.addEventListener('DOMContentLoaded', fetchUrls);
+
+
+
+  </script>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -21,7 +66,7 @@
       <input type="text" placeholder="Url" name="FullUrl" id="FullUrl" class="from-control col mr-2">
       <button type="submit" class="btn btn-success">Shrink</button>
     </form>
-    <table class="table table-striped table-responsive">
+    <table id="urls-table" class="table table-striped table-responsive">
       <thead>
         <tr>
           <th>FullUrl</th>
@@ -32,12 +77,15 @@
       <tbody>
         <tr>
           <td><a href="https://www.sainudheen.me">https://www.sainudheen.me</a></td>
-          <td><a href="/hjj">/123</a></td>
+          <td><a href="./hjj">/123</a></td>
           <td>10</td>
 
         </tr>
       </tbody>
     </table>
+
+
+
 
 
   </div>
