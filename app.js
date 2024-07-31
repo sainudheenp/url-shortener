@@ -7,7 +7,7 @@ require("dotenv").config();
 
 // DB Connection
 const ConnectDB = require("./config/db");
-ConnectDB();
+// ConnectDB();
 
 
 var indexRouter = require("./routes/index");
@@ -53,6 +53,18 @@ app.use(function (err, req, res, next) {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log("server Running on ", process.env.PORT);
-});
+
+
+
+const startServer = async () => {
+  try {
+    await ConnectDB();
+    app.listen(process.env.PORT || 3001, () => {
+      console.log("server Running on ", process.env.PORT);
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+  }
+};
+
+startServer();
