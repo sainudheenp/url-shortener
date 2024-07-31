@@ -41,7 +41,7 @@ const UrlsSchema = new mongoose.Schema({
     required: true,
     default: async () => {
       const nanoid = await getNanoid();
-      return nanoid(10); // Generate a 10-character ID
+      return nanoid(5); // Generate a 10-character ID
     },
   },
   clicks: {
