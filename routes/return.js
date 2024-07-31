@@ -6,7 +6,7 @@
 
     router.get('/return/:short', async (req, res) => {
         console.log(req.params.short);
-        res.send(`Short URL parameter received: ${req.params.short}`);
+    
 
 
       const shorturl= await  ShortUrl.findOne({short:req.params.short})
