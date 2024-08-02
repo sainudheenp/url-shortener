@@ -10,7 +10,7 @@ router.post('/srt-url', async (req, res,next ) => {
         const shortUrl = await ShortUrl.create({ full: req.body.FullUrl });
         // res.status(201).json(shortUrl)
         console.log('Posted')
-        res.render('index',{tite:"zain"})
+        res.render('index')
 
     } catch (error) {
         console.error('Error creating short URL:', error);
