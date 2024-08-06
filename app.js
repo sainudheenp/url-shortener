@@ -13,7 +13,8 @@ const ConnectDB = require("./config/db");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var UrslsRouter = require("./routes/urls");
-var ReturnRouter = require("./routes/return")
+var ReturnRouter = require("./routes/return");
+var LoginRouter = require("./auth/auth.routes")
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/url", UrslsRouter);
 app.use("/api",ReturnRouter);
+app.use("/auth",LoginRouter);
 
 
 // catch 404 and forward to error handler
